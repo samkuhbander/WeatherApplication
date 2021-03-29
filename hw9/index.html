@@ -14,10 +14,51 @@
 		<script>
 
 $(document).ready(function() {
+	$(".square").addClass("outline");	
+
+	$("#buttonToggleColors").click(function(){
+		$(".square").toggleClass("color");
+	});
+
+	$("#buttonToggleRoundborders").click(function(){
+		$(".square").toggleClass("rounded");
+  	});
+	
+	var i = 4;
+	$("#buttonAddBox").click(function(){
+		var newId = "square" + i;
+		var $newdiv1 = $( "<div id= " + newId + " class='square outline'></div>");
+		$("#squares").append($newdiv1);		
+		i++;
+	});
+
+	$("#buttonRemoveBox").click(function(){
+		var name = prompt("Enter id");
+		if (document.getElementById(name)) {
+ 			$('#' + name).remove();
+		} else {
+			alert("Does not exist");  
+		}		
+        });
 
 });
 
 		</script>
+		<style>
+			.square {
+				height: 100px; 
+				width: 100px;
+			}
+			.outline {
+				border-style: solid;
+			}
+			.rounded {
+				border-radius: 15px !important;
+			}
+			.color {
+				background-color: blue;
+			}
+		</style>
 	</head>
 	<body>
 
