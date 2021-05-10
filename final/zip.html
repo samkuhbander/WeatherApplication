@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Icon library for rating system -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="final.css">
+
+  <title>Kuhbander Final CSE383</title>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</head>
+
+<body class="bg-dark">
+
+
+  <!-- Boostrap navigation bar -->
+  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Weather App</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <!-- margin keeps login and search on right -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Information Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="zip.html">Zip Code Lookup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="forecast.html">Weather Forecast</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="history.html">Forecast History</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+	<div class="container-fluid text-center text-light">
+		<h1>Zip Code Lookup</h1><br>
+		<label for="zipInput">Enter your zip code</label>
+		<input type="number" id="zipInput" name="zipInput">
+		<button type="button" id="button" onclick="getZip()" name="button">Submit</button><br>
+		<script>
+			function getZip(){
+				var z = document.getElementById("zipInput").value;
+				document.getElementById("zipInput").value = z;
+				zipRetrieve(z);
+			}
+		</script>
+		<table class="container-fluid text-center text-light table-bordered" id="zipTable">
+			<tr>
+				<td id = "zipCode"> Zip Code: </td>
+			</tr>
+			<tr>
+				<td id = "city"> City: </td>
+			</tr>
+                        <tr>
+				<td id = "state"> State: </td>
+			</tr>
+                        <tr>
+				<td id = "latitude"> Latitude: </td>
+			</tr>
+                        <tr>
+				<td id = "longitude"> Longitude: </td>
+			</tr>
+                        <tr>
+				<td id = "timezone"> Time Zone: </td>
+			</tr>
+                        <tr>
+				<td id = "daylightSavings"> Daylight Savings: </td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

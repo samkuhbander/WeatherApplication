@@ -54,5 +54,17 @@ class final_rest
 
 		return json_encode ($retData);
 	}
+	public static function getTemp ($location, $date) 
+        
+        {
+                try {
+                        $retData["result"] =  GET_SQL("SELECT * FROM temperature where location=? and (date=? or ?=' ') order by date, dateRequested",$location, $date, $date);
+                }
+                catch (Exception $e) {
+                                $retData["status"]=1;
+                                $retData["message"]=$e->getMessage();
+                        }
+                return json_encode ($retData);
+        }
 }
 
