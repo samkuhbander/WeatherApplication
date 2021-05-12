@@ -132,8 +132,8 @@ var lon;
 	}
 
 	function temp(kelvin){
-		far = ((kelvin-273.15)*1.8)+32;
-		return far.toFixed(2); 
+		far = ((kelvin-273.15)*1.8)+32;	
+		return Math.round(far); 
 	}
 
 	function getWeekDay(numb){
