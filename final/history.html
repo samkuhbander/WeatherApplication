@@ -63,7 +63,7 @@
     </div>
   </nav>
 
-	<div class="container-fluid text-center bg-dark b1 text-white">
+	<div class="container text-center bg-dark b1 text-white">
 			<h1>Forecast History</h1><br>
 			<label for="search">Search Date:</label>
 			<input type="date" id="search" name="input"><br>
@@ -71,7 +71,17 @@
                         <label for "order">Zipcode(1) or Time(2):</label>
 			<input type="number" id="order" name="input2" min="1" max="2" value="1"><br>
 			<button type="button" id="button" onclick="callHist()" name="button">Submit</button><br>
-			<p id="history"> </p>
+			<table class="table b1" id="request">
+  				<thead class="thead-dark">
+  				  <tr>
+      					<th scope="col">Location</th>
+      					<th scope="col">Date</th>
+      					<th scope="col">Low</th>
+					<th scope="col">High</th>
+					<th scope="col">Forecast</th>
+    				  </tr>
+  				</thead>
+			</table>
 			<script>
 				function callHist(){
 					var search = document.getElementById("search").value;
