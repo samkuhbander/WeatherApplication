@@ -35,7 +35,7 @@
   <!-- Boostrap navigation bar -->
   <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="index.html">Weather App</a>
+    <a class="navbar-brand" href="index.html"><img src="04d_2x.png" height="50px"></a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -64,7 +64,7 @@
   </nav>
 
 	<div class="container text-center bg-dark b1 text-white">
-			<h1>Forecast History</h1><br>
+			<h1>Forecast History<img src="01d_2x.png" height="100px"></h1><br>
 			<label for="search">Search Date:</label>
 			<input type="date" id="search" name="input"><br>
 			<h3>Choose Sort Order:</h3>
@@ -79,6 +79,7 @@
       					<th scope="col">Low</th>
 					<th scope="col">High</th>
 					<th scope="col">Forecast</th>
+					<th> </th>
     				  </tr>
   				</thead>
 			</table>
@@ -89,7 +90,8 @@
 					getHistory(search,order);
 				}
 			</script>
-		</div>
+
+	</div>
 
 
 </body>

@@ -120,7 +120,11 @@ var lon;
 
 	function getHistory(search, order){
 		$.getJSON('https://kuhbansc.aws.csi.miamioh.edu/final.php?method=getTemp&date='+search+'&sort='+order, function(data) {
-			$("#reset").html("");
+			if($("#reset").length>0){
+				$("#request").empty();
+				$("#request").append("<thead class='thead-dark'> <th>Location </th> <th>Date </th> <th>Low </th> <th>High </th> <th>Forecast </th> </thead>");
+
+ 			}
 			for(let i=0; i<data.result.length; i++){
 				$("#request").append("<tr id='reset'> <td>Location: " + data.result[i].location + "</td> <td>Date: " + data.result[i].DateRequested + "</td> <td>Low: " + data.result[i].Low + "</td> <td>High: " + data.result[i].High + "</td> <td>Forecast: " + data.result[i].Forecast + "</td></tr>");
 			}
