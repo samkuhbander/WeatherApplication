@@ -79,7 +79,9 @@ var lon;
 					$("#day7").append("<img src='" + icons[6] + "_2x.png'><br>");
 					$("#day7").append(getWeekDay(6));
 
-					addHistory(sqlDate(), zip, temp(data.daily[0].temp.min), temp(data.daily[5].temp.max), data.daily[0].weather[0].main);
+					var pass = sqlDate();
+					console.log(pass);
+					addHistory(pass, zip, temp(data.daily[0].temp.min), temp(data.daily[0].temp.max), data.daily[0].weather[0].main);
 				}).fail(function(error) {
                                 	console.log(error);
                         	});
@@ -92,7 +94,7 @@ var lon;
 	function sqlDate(){
                 var d = new Date();
 		var year = d.getFullYear();
-                var month = d.getMonth();
+                var month = d.getMonth()+1;
                 var day = d.getDate();
                 var date = year + "-" + month + "-" + day;
                 return date;
@@ -106,7 +108,16 @@ var lon;
 			high:high,
 			forecast:forecast
 		};
+		console.log(data);
 		$.post('https://kuhbansc.aws.csi.miamioh.edu/final.php?method=setTemp',data);
+	}
+
+	function getHistory(search, order){
+		$.getJSON('https://kuhbansc.aws.csi.miamioh.edu/final.php?method=getTemp&date='+search+'&sort='+order, function(data) {
+			for(x in data){
+				console.log(data[x]);
+			}
+		});
 	}
 
 	function temp(kelvin){

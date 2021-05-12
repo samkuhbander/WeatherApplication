@@ -33,38 +33,44 @@ class final_rest
  *     }
  *
  */
-	public static function setTemp ($location, $sensor, $value)
 
-	{
-		if (!is_numeric($value)) {
-			$retData["status"]=1;
-			$retData["message"]="'$value' is not numeric";
-		}
-		else {
-			try {
-				EXEC_SQL("insert into temperature (location, sensor, value, date) values (?,?,?,CURRENT_TIMESTAMP)",$location, $sensor, $value);
-				$retData["status"]=0;
-				$retData["message"]="insert of '$value' for location: '$location' and sensor '$sensor' accepted";
-			}
-			catch  (Exception $e) {
-				$retData["status"]=1;
-				$retData["message"]=$e->getMessage();
-			}
-		}
+public static function setTemp ($date, $location, $low, $high, $forecast)
 
-		return json_encode ($retData);
-	}
-	public static function getTemp ($location, $date) 
-        
         {
-                try {
-                        $retData["result"] =  GET_SQL("SELECT * FROM temperature where location=? and (date=? or ?=' ') order by date, dateRequested",$location, $date, $date);
+                if(!is_numeric($low)){
+                        $retData["status"]=1;
+                        $retData["message"]="'$value' is not numeric";
                 }
-                catch (Exception $e) {
+                else {
+                        try {
+                                EXEC_SQL("insert into temperature (date, location, low, high, forecast) values (CURRENT_TIMESTAMP,?,?,?,?)",$location, $low, $high, $forecast);
+                                $retData["status"]=0;
+                                $retData["message"]="On '$date', the forecast for '$location' is '$forecast' with a high of '$high' and a low of '$low'";
+                        }
+                        catch  (Exception $e) {
                                 $retData["status"]=1;
                                 $retData["message"]=$e->getMessage();
                         }
+                }
                 return json_encode ($retData);
         }
-}
+	public static function getTemp ($date, $sort)
 
+        {
+                        try {
+                                if($sort == 1){
+                                        $retData["result"] = GET_SQL("select * from temperature where (date=? or ?=' ') order by location",$date, $date);
+                                } else {
+                                        $retData["result"] = GET_SQL("select * from temperature where (date=? or ?=' ') order by DateRequested",$date, $date);
+                                }
+                        }
+                        catch  (Exception $e) {
+                                $retData["status"]=1;
+                                $retData["message"]=$e->getMessage();
+                        }
+                
+
+                return json_encode ($retData);
+        }
+
+}

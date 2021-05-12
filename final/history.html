@@ -15,6 +15,16 @@
 
   <title>Kuhbander Final CSE383</title>
 
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </head>
@@ -25,7 +35,7 @@
   <!-- Boostrap navigation bar -->
   <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">Weather App</a>
+    <a class="navbar-brand" href="index.html">Weather App</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -53,6 +63,23 @@
     </div>
   </nav>
 
+	<div class="container-fluid text-center bg-dark b1 text-white">
+			<h1>Forecast History</h1><br>
+			<label for="search">Search Date:</label>
+			<input type="date" id="search" name="input"><br>
+			<h3>Choose Sort Order:</h3>
+                        <label for "order">Zipcode(1) or Time(2):</label>
+			<input type="number" id="order" name="input2" min="1" max="2" value="1"><br>
+			<button type="button" id="button" onclick="callHist()" name="button">Submit</button><br>
+			<p id="history"> </p>
+			<script>
+				function callHist(){
+					var search = document.getElementById("search").value;
+					var order = document.getElementById("order").value;
+					getHistory(search,order);
+				}
+			</script>
+		</div>
 
 
 </body>
