@@ -10,15 +10,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <!-- Icon library for rating system -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <!-- External CSS -->
   <link rel="stylesheet" href="final.css">
 
   <title>Kuhbander Final CSE383</title>
 
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -29,7 +25,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
   crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
 </head>
 
 <body class="bg-dark">
@@ -38,7 +35,7 @@
   <!-- Boostrap navigation bar -->
   <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">Weather App</a>
+    <a class="navbar-brand" href="index.html">Weather App</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -62,11 +59,32 @@
           <a class="nav-link" href="history.html">Forecast History</a>
         </li>
       </ul>
-      
+
     </div>
   </nav>
-
-
+        <div class="container-fluid text-center text-light">
+                <h1>Weather Forecast</h1><br>
+                <label for="zipFor">Enter your zip code</label>
+                <input type="number" id="zipFor" name="zipFor">
+                <button type="button" id="button" onclick="getForecast()" name="button">Submit</button><br>
+                <script>
+                        function getForecast(){
+                                var z = document.getElementById("zipFor").value;
+                                document.getElementById("zipFor").value = z;
+                                zipForecast(z);
+                        }
+                </script>
+		<div class="row">
+		  <div class="col" id="day1"></div>
+		  <div class="col" id="day2"></div>
+		  <div class="col" id="day3"></div>
+		  <div class="col" id="day4"></div>
+		  <div class="col" id="day5"></div>
+		  <div class="col" id="day6"></div>
+		  <div class="col" id="day7"></div>
+		</div>
+        </div>
 
 </body>
 </html>
+
